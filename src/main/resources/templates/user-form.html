@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+<body>
+    <h1 th:text="${user.id == null ? 'Add User' : 'Edit User'}"></h1>
+    <a th:href="@{/users}">Back to Users</a>
+    <form th:action="@{/users/save}" th:object="${user}" method="post">
+        <fieldset>
+            <legend th:text="${user.id == null ? 'ADD' : 'EDIT'}"></legend>
+            <input type="hidden" name="id" id="id" th:field="*{id}">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" th:field="*{lastName}" required><br>
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname" th:field="*{firstName}" required><br>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" th:field="*{age}"><br>
+            <label for="genre">Genre</label>
+            <select name="genre" id="genre" th:field="*{genre}">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" th:field="*{address}"><br>
+            <label for="state">State</label>
+            <input type="text" name="state" id="state" th:field="*{state}"><br>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" th:field="*{email}" required><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" th:field="*{password}"><br>
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <a th:href="@{/}">Home</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Age</th>
+                <th>Genre</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.genre}"></td>
+                <td th:text="${user.address}"></td>
+                <td th:text="${user.state}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <a th:href="@{/users/{id}(id=${user.id})}">View</a>
+                    <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
+                    <a th:href="@{/users/delete/{id}(id=${user.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/users/add}">Add User</a>
+</body>
+</html>
